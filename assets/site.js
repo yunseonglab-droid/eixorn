@@ -68,14 +68,20 @@ document.querySelectorAll('[data-demo]').forEach(demo => {
   const remPreview = demo.querySelector('[data-rem-preview]');
   const remViews = remPreview?.querySelectorAll('[data-rem-view]');
   const remStatuses = remPreview?.querySelectorAll('[data-rem-status]');
+  const remSteps = remPreview?.querySelectorAll('[data-rem-step]');
   const demoMotion = window.matchMedia('(min-height: 610px) and (prefers-reduced-motion: no-preference)');
   let frame = 0;
   let manual = false;
   function setRemPhase(phase) {
     if (!remPreview || remPreview.dataset.phase === String(phase)) return;
     remPreview.dataset.phase = String(phase);
-    remViews[0].hidden = phase === 2;
-    remViews[1].hidden = phase !== 2;
+    const view = phase === 1 ? '0' : String(phase);
+    remViews.forEach(shot => {
+      const current = shot.dataset.remView === view;
+      shot.classList.toggle('is-current', current);
+      shot.setAttribute('aria-hidden', !current);
+    });
+    remSteps.forEach(button => button.setAttribute('aria-pressed', button.dataset.remStep === view));
     remStatuses.forEach((status, i) => { status.hidden = i !== phase; });
   }
   function select(index, focus = false) {
@@ -94,7 +100,6 @@ document.querySelectorAll('[data-demo]').forEach(demo => {
   function selectManually(index, focus) {
     manual = true;
     select(index, focus);
-    setRemPhase(2);
   }
   function renderDemo() {
     frame = 0;
@@ -105,18 +110,27 @@ document.querySelectorAll('[data-demo]').forEach(demo => {
     const start = parseFloat(getComputedStyle(demo).top);
     const progress = Math.max(0, Math.min(1, (start - top) / distance));
     scene.classList.toggle('demo-running', top < start + 180 && top + scene.offsetHeight >= start);
-    const phase = Math.min(2, Math.floor(progress * 3));
-    if (remPreview) setRemPhase(phase);
-    else if (Number(demo.dataset.selected) !== phase && !demo.contains(document.activeElement)) select(phase);
+    if (remPreview) {
+      setRemPhase(progress < .2 ? 0 : progress < .45 ? 1 : progress < .7 ? 2 : 3);
+    } else if (!demo.contains(document.activeElement)) {
+      const index = Math.min(tabs.length - 1, Math.floor(progress * tabs.length));
+      if (Number(demo.dataset.selected) !== index) select(index);
+    }
   }
   function queueDemo() {
     if (!frame && demoMotion.matches && !manual) frame = requestAnimationFrame(renderDemo);
   }
   function syncDemo() {
-    scene.classList.toggle('demo-scroll-enabled', demoMotion.matches);
-    if (demoMotion.matches) queueDemo();
-    else setRemPhase(2);
+    const fits = demo.offsetHeight + parseFloat(getComputedStyle(demo).top) <= window.innerHeight;
+    const enableMotion = demoMotion.matches && fits;
+    scene.classList.toggle('demo-scroll-enabled', enableMotion);
+    if (enableMotion) queueDemo();
+    else if (!manual) setRemPhase(3);
   }
+  remSteps?.forEach(button => button.addEventListener('click', () => {
+    manual = true;
+    setRemPhase(Number(button.dataset.remStep));
+  }));
   tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => selectManually(index));
     tab.addEventListener('keydown', event => {
@@ -133,7 +147,7 @@ document.querySelectorAll('[data-demo]').forEach(demo => {
     });
   });
   window.addEventListener('scroll', queueDemo, {passive: true});
-  window.addEventListener('resize', queueDemo);
+  window.addEventListener('resize', syncDemo);
   demoMotion.addEventListener('change', syncDemo);
   syncDemo();
 });

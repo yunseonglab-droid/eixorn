@@ -12,9 +12,9 @@
 <meta property="og:url" content="https://yunseonglab-droid.github.io/eixorn/en/rem404/"><link rel="canonical" href="https://yunseonglab-droid.github.io/eixorn/en/rem404/"><link rel="alternate" hreflang="ko" href="https://yunseonglab-droid.github.io/eixorn/rem404/">
 <title>REM404 | EIXORN</title>
 <link rel="icon" href="/eixorn/assets/eixorn-fold.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/eixorn/assets/site.css?v=product-walkthroughs-20261127">
+<link rel="stylesheet" href="/eixorn/assets/site.css?v=product-screens-20261127">
 
-<script src="/eixorn/assets/site.js?v=product-walkthroughs-20261127" defer></script>
+<script src="/eixorn/assets/site.js?v=product-screens-20261127" defer></script>
 </head>
 <body class="case" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -44,38 +44,36 @@
         </div>
         <div class="demo-panels">
           <div class="demo-panel" role="tabpanel" tabindex="0" id="case-rem404-panel-0" aria-labelledby="case-rem404-tab-0" >
-            <ol class="demo-journey"><li>Open the QR code</li><li>Explore artwork and AR</li><li>Leave a memory</li></ol>
-<div class="rem-preview" data-rem-preview data-phase="2">
-              <div class="rem-scan" data-rem-view hidden>
-                <div class="rem-viewfinder"><img src="/eixorn/assets/rem404-demo-qr.png" alt="" width="198" height="198" loading="lazy"><span aria-hidden="true"></span></div>
-              </div>
-              <div class="rem-artwork" data-rem-view>
-                <div class="rem-artwork-image" aria-hidden="true"></div>
-                <div><small>Demo data</small><strong>Artwork details</strong></div>
-              </div>
-              <p class="rem-preview-status"><span data-rem-status hidden>Point the camera at the exhibition QR code.</span><span data-rem-status hidden>QR recognized · Opening the exhibition.</span><span data-rem-status>Select an artwork to see its image and description.</span></p>
-            </div>
-            <strong>Start at the gallery entrance</strong><p>Open the QR code and browse the works. For installations that support it, point the camera at the work to open an AR experience.</p>
-            
+            <div class="rem-preview" data-rem-preview data-phase="3">
+      <div class="rem-stages" role="group" aria-label="Public sample exhibition · Simulated QR scan">
+        <button type="button" data-rem-step="0" aria-pressed="false">Exhibition QR</button><button type="button" data-rem-step="2" aria-pressed="false">Entrance</button><button type="button" data-rem-step="3" aria-pressed="true">Artwork</button>
+      </div>
+      <div class="rem-screen">
+        <div class="rem-shot rem-scan" data-rem-view="0" aria-hidden="true">
+          <div class="rem-viewfinder"><img src="/eixorn/assets/rem404-demo-qr.png" alt="" width="222" height="222" loading="lazy"><span></span></div>
+        </div>
+        <div class="rem-shot rem-entrance" data-rem-view="2" aria-hidden="true">
+          <img src="/eixorn/assets/rem404-entrance.webp" width="470" height="354" alt="REM404 sample exhibition entrance with an Open the Archive button" loading="lazy" decoding="async">
+        </div>
+        <div class="rem-shot rem-artwork is-current" data-rem-view="3">
+          <img src="/eixorn/assets/rem404-artwork.webp" width="1470" height="719" alt="Sample artwork showing a school in REM404 manual viewing mode." loading="lazy" decoding="async">
+        </div>
+      </div>
+      <p class="rem-status"><span data-rem-status hidden>Scan the QR code to open the public exhibition.</span><span data-rem-status hidden>QR recognized</span><span data-rem-status hidden>REM404 sample exhibition entrance</span><span data-rem-status>Artwork from the public sample exhibition</span></p>
+      <div class="rem-sample"><span>Public sample exhibition · Simulated QR scan</span><a class="text-link" href="https://rem404.com/e/app-review-sample">Open the public exhibition <span aria-hidden="true">↗</span></a></div>
+    </div>
           </div><div class="demo-panel" role="tabpanel" tabindex="0" id="case-rem404-panel-1" aria-labelledby="case-rem404-tab-1" hidden>
             <ol class="demo-journey"><li>Register artwork</li><li>Prepare materials</li><li>Check the visitor view</li></ol>
-
-            <strong>Prepare the works and their materials</strong><p>Add artwork text, images and video to an assigned exhibition for its visitors.</p>
-            
+              <strong>Prepare the works and their materials</strong><p>Add artwork text, images and video to an assigned exhibition for its visitors.</p>
           </div><div class="demo-panel" role="tabpanel" tabindex="0" id="case-rem404-panel-2" aria-labelledby="case-rem404-tab-2" hidden>
             <ol class="demo-journey"><li>Manage operations</li><li>Manage permissions</li><li>Archive the exhibition</li></ol>
-
-            <strong>Manage operations and access</strong><p>Manage roles and the exhibition state, and review materials exhibition by exhibition.</p>
-            
+              <strong>Manage operations and access</strong><p>Manage roles and the exhibition state, and review materials exhibition by exhibition.</p>
           </div><div class="demo-panel" role="tabpanel" tabindex="0" id="case-rem404-panel-3" aria-labelledby="case-rem404-tab-3" hidden>
             <ol class="demo-journey"><li>Check operations</li><li>Check AR readiness</li><li>Review diagnostics</li></ol>
-
-            <strong>Check on-site readiness</strong><p>Review operational status and AR readiness from the desktop workspace.</p>
-            
+              <strong>Check on-site readiness</strong><p>Review operational status and AR readiness from the desktop workspace.</p>
           </div>
         </div>
       </div>
-      <div class="demo-caption">Switch roles to see how one exhibition works.</div>
     </div></div></div></section>
     <section class="case-section wrap"><h2>The starting point</h2><p>When the exhibition website, on-site AR, artwork management and operational checks are separate, changes on the floor are hard to coordinate. REM404 groups artworks and visitor memories by exhibition and gives each role its own view.</p></section>
     <section class="case-section wrap"><h2>Design and engineering</h2><dl class="features"><div><dt>Visitor web and mobile apps</dt><dd>Visitors can open a QR code or exhibition link without signing in, then explore artwork information, image-tracked AR and visitor memories. The visitor journey spans web, iOS and Android.</dd></div><div><dt>Artist and administrator workspaces</dt><dd>Artists manage artwork materials in their assigned exhibitions. Administrators manage roles and the state of exhibitions.</dd></div><div><dt>REM404 Center</dt><dd>The desktop tool checks operational status and AR readiness. Operational and development checks have their own workspace.</dd></div><div><dt>Exhibition archive</dt><dd>Artworks and visitor memories are organized by exhibition. Exhibitions move into an archived state when their run ends.</dd></div></dl></section>
