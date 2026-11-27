@@ -403,7 +403,6 @@ a { color: inherit; text-decoration: none; }
   .demo-scene { --demo-travel: clamp(14rem, 46svh, 23rem); }
   .demo-rem404 .demo-panel { padding-block: 1rem; }
   .rem-screen { aspect-ratio: 4 / 3; }
-  .rem-artwork > img { object-fit: cover; object-position: 53% center; }
   .chapter-desc { margin-top: .64rem; }
   .chapter-copy a { margin-top: 1.1rem; }
   .case-heading, .dossier > article { gap: .9rem; }
