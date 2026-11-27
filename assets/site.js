@@ -212,14 +212,15 @@ if (chapterLinks.length) {
     measurements.forEach(({ link, sequence, rect, active, travel }) => {
       if (active) {
         link.setAttribute('aria-current', 'location');
-        link.style.setProperty('--chapter-progress', motion ? Math.max(.16, clamp((threshold - rect.top) / rect.height)) : 1);
+        link.style.setProperty('--chapter-progress', motion ? clamp((threshold - rect.top) / rect.height) : 1);
       } else {
         link.removeAttribute('aria-current');
       }
       if (!travel) return;
       const progress = clamp((stickyTop - rect.top) / travel);
-      sequence.style.setProperty('--logo-lift', `${(-1.15 * progress).toFixed(3)}rem`);
-      sequence.style.setProperty('--logo-scale', (1 - .1 * progress).toFixed(3));
+      const eased = progress * progress * (3 - 2 * progress);
+      sequence.style.setProperty('--logo-lift', `${(-1.75 * eased).toFixed(3)}rem`);
+      sequence.style.setProperty('--logo-scale', (1 - .12 * eased).toFixed(3));
     });
   }
   function queueChapter() {
