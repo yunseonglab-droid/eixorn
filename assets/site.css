@@ -143,13 +143,18 @@ a { color: inherit; text-decoration: none; }
 .compare-card img { width: 100%; height: auto; }
 .compare-figure { min-width: 0; }
 .compare-title { font-size: clamp(1.15rem, 2.05vw, 1.6rem); font-weight: 650; letter-spacing: -.025em; margin-bottom: .65rem; }
-.compare-mode { display: flex; flex-wrap: wrap; gap: .36rem; margin-bottom: .58rem; }
-.compare-mode button {
-  min-height: 2.6rem; padding: .4rem .72rem; color: var(--muted); background: transparent; border: 1px solid var(--hairline);
-  border-radius: var(--control-radius); font-size: .9rem; cursor: pointer;
+.compare-mode, .demo-tabs { display: flex; flex-wrap: wrap; gap: .1rem clamp(.85rem, 2vw, 1.5rem); }
+.compare-mode { margin-bottom: .6rem; }
+.compare-mode button, .demo-tabs button {
+  min-height: 2.75rem; padding: .35rem 0; border: 0;
+  background: transparent; color: var(--muted); cursor: pointer;
+  font-size: .92rem; text-align: start;
 }
-.compare-mode button:hover { border-color: var(--border); background: var(--surface); }
-.compare-mode button[aria-pressed="true"] { color: var(--text); background: var(--elevated); border-color: #70716e; }
+.compare-mode button:hover, .demo-tabs button:hover { color: var(--text); }
+.compare-mode button[aria-pressed="true"], .demo-tabs button[aria-selected="true"] {
+  color: var(--text); font-weight: 640;
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .45em;
+}
 .compare {
   position: relative; overflow: hidden; isolation: isolate; background: var(--canvas);
   border: 1px solid var(--border); border-radius: var(--panel-radius);
@@ -183,13 +188,7 @@ a { color: inherit; text-decoration: none; }
   border-bottom: 1px solid var(--hairline); color: var(--faint); font-size: .88rem;
 }
 .demo-brand { color: var(--text); font-size: 1.05rem; font-weight: 690; letter-spacing: -.035em; }
-.demo-tabs { display: flex; flex-wrap: wrap; gap: .35rem; padding: .75rem 1.15rem; border-bottom: 1px solid var(--hairline); }
-.demo-tabs button {
-  min-height: 2.75rem; padding: .48rem .78rem; border: 1px solid transparent; border-radius: var(--control-radius);
-  background: transparent; cursor: pointer; color: var(--muted); font-size: .92rem; text-align: start;
-}
-.demo-tabs button:hover { border-color: var(--border); }
-.demo-tabs button[aria-selected="true"] { background: var(--elevated); border-color: #70716e; color: var(--text); }
+.demo-tabs { padding: .4rem 1.35rem; border-bottom: 1px solid var(--hairline); }
 .demo-panels { min-height: 14rem; }
 .demo-panel { padding: clamp(1rem, 3vw, 2.55rem); }
 .demo-panel strong { display: block; font-size: clamp(1.24rem, 2.25vw, 2rem); line-height: 1.15; font-weight: 650; letter-spacing: -.04em; }
@@ -208,7 +207,8 @@ a { color: inherit; text-decoration: none; }
 .demo-journey::before { content: ""; position: absolute; top: .24rem; inset-inline: 16.67%; border-top: 1px solid var(--border); }
 .demo-journey li { position: relative; display: grid; justify-items: center; gap: .53rem; color: var(--muted); text-align: center; font-size: .86rem; word-break: keep-all; }
 .demo-journey li::before { content: ""; width: .55rem; height: .55rem; border-radius: 50%; background: var(--accent); }
-.demo :focus-visible { outline-offset: -3px; }
+.demo-panel:focus-visible { outline-offset: -3px; }
+.demo-tabs button:focus-visible, .compare-mode button:focus-visible { outline-offset: 3px; }
 .demo-caption { border-top: 1px solid var(--hairline); padding: .75rem 1rem; font-size: .9rem; color: var(--faint); }
 @media (prefers-reduced-motion: no-preference) {
   .demo-panel.is-changing { animation: answer-in .25s cubic-bezier(.2,.7,.2,1) both; }
@@ -308,8 +308,7 @@ a { color: inherit; text-decoration: none; }
   .chapter-capabilities { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: .65rem; }
   .compare-card-label { min-block-size: 4.5rem; }
   .demo-heading { padding-inline: 1rem; }
-  .demo-tabs { padding-inline: .75rem; }
-  .demo-tabs button { padding-inline: .52rem; }
+  .demo-tabs { padding-inline: 1rem; }
   .demo-journey li { font-size: .8rem; }
   .chapter-grid, .case-heading, .dossier > article { grid-template-columns: 1fr; }
   .chapter-grid { gap: 1.65rem; }
