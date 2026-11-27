@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#090909">
-<meta name="description" content="건물 입면과 찢어진 옛 사진을 복원합니다. 흑백 사진에 색을 더하고, 디테일을 보정해 최대 4배로 확대할 수 있습니다.">
+<meta name="description" content="낡은 사진의 손상을 복원하고 해상도를 최대 4배 높이는 이미지 엔진입니다.">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="엑소론(EIXORN)">
-<meta property="og:title" content="Aether | EIXORN">
-<meta property="og:description" content="건물 입면과 찢어진 옛 사진을 복원합니다. 흑백 사진에 색을 더하고, 디테일을 보정해 최대 4배로 확대할 수 있습니다.">
+<meta property="og:site_name" content="엑소론">
+<meta property="og:title" content="Aether | 엑소론">
+<meta property="og:description" content="낡은 사진의 손상을 복원하고 해상도를 최대 4배 높이는 이미지 엔진입니다.">
 <meta property="og:url" content="https://yunseonglab-droid.github.io/eixorn/aether/"><link rel="canonical" href="https://yunseonglab-droid.github.io/eixorn/aether/"><link rel="alternate" hreflang="en" href="https://yunseonglab-droid.github.io/eixorn/en/aether/">
-<title>Aether | 엑소론(EIXORN)</title>
+<title>Aether | 엑소론</title>
 <link rel="icon" href="/eixorn/assets/eixorn-fold.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/eixorn/assets/site.css?v=20261127-3">
+<link rel="stylesheet" href="/eixorn/assets/site.css?v=20261127-4">
 
 <script src="/eixorn/assets/site.js" defer></script>
 </head>
@@ -24,6 +24,7 @@
     <nav class="main-nav" aria-label="주 메뉴">
       <a href="/eixorn/#studio">회사 소개</a>
       <a href="/eixorn/#products" aria-current="true">제품</a>
+      <a href="/eixorn/profile/">프로필</a>
     </nav>
     <a class="lang-link" href="/eixorn/en/aether/" hreflang="en" lang="en" aria-label="English">EN</a>
   </div>
@@ -33,7 +34,7 @@
       <div class="case-heading"><div><p class="eyebrow"><span></span>이미지 복원·보정 엔진</p><h1 class="product-title product-title-aether">
     <img class="product-logo" src="/eixorn/assets/aether-mark.webp" width="384" height="384" alt="" loading="eager" decoding="async">
     <span>Aether</span>
-  </h1></div><div><h2>사진을 복원하고, 디테일을 살립니다.</h2><p>건물 입면과 찢어진 옛 사진을 복원합니다. 흑백 사진에 색을 더하고, 디테일을 보정해 최대 4배로 확대할 수 있습니다.</p></div></div>
+  </h1></div><div><h2>사진을 복원하고 디테일을 살립니다.</h2><p>낡은 사진의 손상을 복원하고 해상도를 최대 4배 높이는 이미지 엔진입니다.</p></div></div>
     </div></section>
     <section class="case-demo case-demo-aether" aria-label="체험과 검증"><div class="wrap"><figure class="compare-figure" aria-labelledby="case-aether-comparison-title" data-comparison>
       <h3 class="compare-title" id="case-aether-comparison-title">건물 입면 복원 전후</h3>
@@ -61,14 +62,14 @@
       </div>
       <figcaption class="figure-meta"><span>공개 사진의 창과 석벽을 일부 가린 뒤, 원본을 참조해 입면을 복원한 시연입니다.</span><a href="https://commons.wikimedia.org/wiki/File:House_facade_2023.jpg" class="text-link">원본 사진 · Open Spaces Historic Places (CC0)</a><span class="compare-hint" id="case-aether-hint" hidden>가운데 손잡이를 움직여 같은 위치의 복원 전후를 비교하세요.</span></figcaption>
     </figure></div></section>
-    <section class="case-section wrap"><h2>출발점</h2><p>건물 입면은 촬영 시점마다 원근과 구도가 다르고, 찢어진 옛 사진은 조각의 경계가 어긋납니다. Aether는 각 작업에 맞는 정렬과 복원 도구를 제공하고, 보호할 영역을 직접 지정할 수 있게 합니다.</p></section>
-    <section class="case-section wrap"><h2>설계와 구현</h2><dl class="features"><div><dt>최대 4배 업스케일링</dt><dd>해상도를 최대 4배로 높이고 윤곽의 디테일 강도를 조절합니다. Aether 엔진과 Real-ESRGAN 중에서 선택할 수 있습니다.</dd></div><div><dt>옛 사진 복원</dt><dd>흠집과 찢어진 경계를 표시해 복구하고, 어긋난 사진 조각을 맞춥니다. 얼굴 보호 브러시로 남아 있는 눈·코·입 윤곽을 보호할 수 있습니다.</dd></div><div><dt>흑백·세피아 착색</dt><dd>흑백·세피아 사진에 색을 더하고, 인물과 배경 등 영역별 색상과 강도를 조절합니다.</dd></div><div><dt>건물 입면 복원</dt><dd>과거 참조 사진의 원근을 맞춰 현재 사진의 손상이나 가림을 복원합니다. 참조에서 확인되는 픽셀을 우선 적용하고 마스크 밖의 현재 사진 픽셀을 보존합니다.</dd></div><div><dt>마스크와 정합</dt><dd>수동 브러시와 자동 분할로 복원 범위를 정합니다. 입면은 OpenCV SIFT 대응점이나 수동 기준점으로 맞추며, Windows RTX에서는 깊이 조건을 적용한 생성 복원도 사용할 수 있습니다.</dd></div><div><dt>마무리 편집과 내보내기</dt><dd>복제 도장, 수평 조정, 자르기로 사진을 다듬고 PNG로 저장합니다. 입면 복원에서는 참조 근거와 픽셀 검사 기록도 내보낼 수 있습니다.</dd></div></dl></section>
-    <section class="case-section wrap case-proof"><h2>체험과 검증</h2><div><h3>마스크 밖 픽셀 변경 0개</h3><p>공개 사진에서 창과 석벽을 가린 시험용 입력을 만들고, 원본을 참조 사진으로 사용했습니다. 네 기준점으로 정합해 복원한 뒤 마스크 밖 181,845개 픽셀이 입력과 일치했습니다.</p></div></section>
+    <section class="case-section wrap"><h2>Aether 주요 기능</h2>
+      <ul class="aether-detail-features"><li>최대 4배 업스케일링</li><li>옛 사진 복원</li><li>흑백·세피아 착색</li><li>건물 입면 복원</li><li>마스크와 정합</li><li>마무리 편집과 내보내기</li></ul>
+    </section>
     <div class="case-next"><div class="wrap"><a href="/eixorn/vega/"><span>다음 제품</span><strong>Vega</strong><span class="link-mark" aria-hidden="true">+</span></a></div></div></main>
 <footer class="site-footer"><div class="wrap footer-inner">
   <a href="/eixorn/" class="brand"><img class="brand-wordmark" src="/eixorn/assets/eixorn-wordmark.svg" width="607" height="98" alt="EIXORN"></a>
   <nav aria-label="하단 메뉴"><a href="/eixorn/#studio">회사 소개</a><a href="/eixorn/portfolio/">포트폴리오</a></nav>
-  <div class="footer-meta"><small>© 2026 EIXORN</small><span>대표 엄윤성</span></div>
+  <div class="footer-meta"><small>© 2026 EIXORN Labs</small><span>대표 엄윤성</span></div>
   <a href="#top" class="text-link">맨 위로</a>
 </div></footer>
 </body></html>
