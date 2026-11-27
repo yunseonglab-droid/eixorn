@@ -13,9 +13,9 @@
 <meta property="og:url" content="https://yunseonglab-droid.github.io/eixorn/"><link rel="canonical" href="https://yunseonglab-droid.github.io/eixorn/"><link rel="alternate" hreflang="en" href="https://yunseonglab-droid.github.io/eixorn/en/">
 <title>엑소론 (EIXORN) — 독립 디자인·엔지니어링 스튜디오</title>
 <link rel="icon" href="/eixorn/assets/eixorn-fold.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/eixorn/assets/site.css?v=20261127-4">
+<link rel="stylesheet" href="/eixorn/assets/site.css?v=aether-20261127">
 <noscript><style>.hero-video{display:none}.hero-video:not([hidden]) + .hero-wordmark{opacity:1}</style></noscript>
-<script src="/eixorn/assets/site.js" defer></script>
+<script src="/eixorn/assets/site.js?v=aether-20261127" defer></script>
 </head>
 <body class="home" id="top">
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -166,12 +166,13 @@
             <p class="chapter-desc">낡은 사진의 손상을 복원하고 해상도를 최대 4배 높이는 이미지 엔진입니다.</p>
           </div>
         </div>
-        <ul class="chapter-capabilities" aria-label="Aether 주요 기능"><li>최대 4배 업스케일링</li><li>옛 사진 복원</li><li>흑백·세피아 착색</li><li>건물 입면 복원</li></ul>
         <div class="chapter-visual"><figure class="compare-figure" aria-labelledby="home-aether-comparison-title" data-comparison>
-      <h3 class="compare-title" id="home-aether-comparison-title">건물 입면 복원 전후</h3>
-      <div class="compare-mode" role="group" aria-label="비교 보기" hidden>
-        <button type="button" data-compare-mode="pair" aria-pressed="true">나란히 비교</button>
-        <button type="button" data-compare-mode="slider" aria-pressed="false">밀어서 비교</button>
+      <div class="compare-toolbar">
+        <h3 class="compare-title" id="home-aether-comparison-title">건물 입면 복원 전후</h3>
+        <div class="compare-mode" role="group" aria-label="비교 보기" hidden>
+          <button type="button" data-compare-mode="slider" aria-pressed="false">밀어서 비교</button>
+          <button type="button" data-compare-mode="pair" aria-pressed="true">나란히 비교</button>
+        </div>
       </div>
       <div class="compare-pair" data-compare-pair>
         <div class="compare-card compare-card-before">
@@ -183,17 +184,20 @@
       <img src="/eixorn/assets/aether-sample-after.webp" width="254" height="133" alt="참조 사진으로 복원한 결과" loading="lazy" decoding="async">
     </div>
       </div>
-      <div class="compare" data-compare style="--split:67%" hidden>
-        <img class="compare-image" src="/eixorn/assets/aether-sample-after.webp" width="254" height="133" alt="참조 사진으로 복원한 결과" loading="lazy">
-        <img class="compare-image compare-before" src="/eixorn/assets/aether-sample-before.webp" width="254" height="133" alt="창과 석벽을 가린 시험용 입력" loading="lazy">
+      <div class="compare" data-compare style="--split:64%" hidden>
+        <img class="compare-image" src="/eixorn/assets/aether-full-after.webp" width="640" height="319" alt="참조 사진으로 복원한 결과" loading="lazy">
+        <img class="compare-image compare-before" src="/eixorn/assets/aether-full-before.webp" width="640" height="319" alt="창과 석벽을 가린 시험용 입력" loading="lazy">
         <span class="compare-label compare-label-before" aria-hidden="true">복원 전</span>
         <span class="compare-label compare-label-after" aria-hidden="true">복원 후</span>
-        <input type="range" min="0" max="100" value="67" step="1" aria-label="복원 전후 비교 위치" aria-describedby="home-aether-hint">
+        <input type="range" min="0" max="100" value="64" step="1" aria-label="복원 전후 비교 위치" aria-describedby="home-aether-hint">
         <span class="compare-divider" aria-hidden="true"><span></span></span>
       </div>
       <figcaption class="figure-meta"><span>공개 사진의 창과 석벽을 일부 가린 뒤, 원본을 참조해 입면을 복원한 시연입니다.</span><a href="https://commons.wikimedia.org/wiki/File:House_facade_2023.jpg" class="text-link">원본 사진 · Open Spaces Historic Places (CC0)</a><span class="compare-hint" id="home-aether-hint" hidden>가운데 손잡이를 움직여 같은 위치의 복원 전후를 비교하세요.</span></figcaption>
     </figure></div>
-        <div class="chapter-actions"><a class="outline-link" href="/eixorn/aether/" aria-label="Aether · 제품 자세히 보기">제품 자세히 보기<span class="link-mark" aria-hidden="true">+</span></a></div>
+        <div class="aether-overview-footer">
+          <ul class="chapter-capabilities" aria-label="Aether 주요 기능"><li>최대 4배 업스케일링</li><li>옛 사진 복원</li><li>흑백·세피아 착색</li><li>건물 입면 복원</li></ul>
+          <a class="outline-link" href="/eixorn/aether/" aria-label="Aether · 제품 자세히 보기">제품 자세히 보기<span class="link-mark" aria-hidden="true">+</span></a>
+        </div>
       </div>
     </article>
   </section></main>

@@ -12,9 +12,9 @@
 <meta property="og:url" content="https://yunseonglab-droid.github.io/eixorn/en/"><link rel="canonical" href="https://yunseonglab-droid.github.io/eixorn/en/"><link rel="alternate" hreflang="ko" href="https://yunseonglab-droid.github.io/eixorn/">
 <title>EIXORN — Independent design &amp; engineering studio</title>
 <link rel="icon" href="/eixorn/assets/eixorn-fold.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/eixorn/assets/site.css?v=20261127-4">
+<link rel="stylesheet" href="/eixorn/assets/site.css?v=aether-20261127">
 <noscript><style>.hero-video{display:none}.hero-video:not([hidden]) + .hero-wordmark{opacity:1}</style></noscript>
-<script src="/eixorn/assets/site.js" defer></script>
+<script src="/eixorn/assets/site.js?v=aether-20261127" defer></script>
 </head>
 <body class="home" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -165,12 +165,13 @@
             <p class="chapter-desc">An image engine that repairs damaged photographs and upscales them up to 4×.</p>
           </div>
         </div>
-        <ul class="chapter-capabilities" aria-label="Aether features"><li>Up to 4× upscaling</li><li>Old photo repair</li><li>Black-and-white and sepia colorization</li><li>Building façade restoration</li></ul>
         <div class="chapter-visual"><figure class="compare-figure" aria-labelledby="home-aether-comparison-title" data-comparison>
-      <h3 class="compare-title" id="home-aether-comparison-title">Façade restoration before and after</h3>
-      <div class="compare-mode" role="group" aria-label="Comparison view" hidden>
-        <button type="button" data-compare-mode="pair" aria-pressed="true">Side by side</button>
-        <button type="button" data-compare-mode="slider" aria-pressed="false">Slider</button>
+      <div class="compare-toolbar">
+        <h3 class="compare-title" id="home-aether-comparison-title">Façade restoration before and after</h3>
+        <div class="compare-mode" role="group" aria-label="Comparison view" hidden>
+          <button type="button" data-compare-mode="slider" aria-pressed="false">Slider</button>
+          <button type="button" data-compare-mode="pair" aria-pressed="true">Side by side</button>
+        </div>
       </div>
       <div class="compare-pair" data-compare-pair>
         <div class="compare-card compare-card-before">
@@ -182,17 +183,20 @@
       <img src="/eixorn/assets/aether-sample-after.webp" width="254" height="133" alt="Aether result using the reference photograph" loading="lazy" decoding="async">
     </div>
       </div>
-      <div class="compare" data-compare style="--split:67%" hidden>
-        <img class="compare-image" src="/eixorn/assets/aether-sample-after.webp" width="254" height="133" alt="Aether result using the reference photograph" loading="lazy">
-        <img class="compare-image compare-before" src="/eixorn/assets/aether-sample-before.webp" width="254" height="133" alt="Test input with obscured windows and stonework" loading="lazy">
+      <div class="compare" data-compare style="--split:64%" hidden>
+        <img class="compare-image" src="/eixorn/assets/aether-full-after.webp" width="640" height="319" alt="Aether result using the reference photograph" loading="lazy">
+        <img class="compare-image compare-before" src="/eixorn/assets/aether-full-before.webp" width="640" height="319" alt="Test input with obscured windows and stonework" loading="lazy">
         <span class="compare-label compare-label-before" aria-hidden="true">Before restoration</span>
         <span class="compare-label compare-label-after" aria-hidden="true">After restoration</span>
-        <input type="range" min="0" max="100" value="67" step="1" aria-label="Restoration comparison position" aria-describedby="home-aether-hint">
+        <input type="range" min="0" max="100" value="64" step="1" aria-label="Restoration comparison position" aria-describedby="home-aether-hint">
         <span class="compare-divider" aria-hidden="true"><span></span></span>
       </div>
       <figcaption class="figure-meta"><span>We obscured part of the windows and stonework in a public-domain photograph, then used the original as a reference to restore the façade.</span><a href="https://commons.wikimedia.org/wiki/File:House_facade_2023.jpg" class="text-link">Original photograph by Open Spaces Historic Places (CC0)</a><span class="compare-hint" id="home-aether-hint" hidden>Move the handle to compare exactly the same part of the image.</span></figcaption>
     </figure></div>
-        <div class="chapter-actions"><a class="outline-link" href="/eixorn/en/aether/" aria-label="Aether · Explore the product">Explore the product<span class="link-mark" aria-hidden="true">+</span></a></div>
+        <div class="aether-overview-footer">
+          <ul class="chapter-capabilities" aria-label="Aether features"><li>Up to 4× upscaling</li><li>Old photo repair</li><li>Black-and-white and sepia colorization</li><li>Building façade restoration</li></ul>
+          <a class="outline-link" href="/eixorn/en/aether/" aria-label="Aether · Explore the product">Explore the product<span class="link-mark" aria-hidden="true">+</span></a>
+        </div>
       </div>
     </article>
   </section></main>

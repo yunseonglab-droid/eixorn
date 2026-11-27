@@ -10,15 +10,17 @@ document.querySelectorAll('[data-comparison]').forEach(figure => {
     compare.style.setProperty('--split', value + '%');
     compare.dataset.position = value === '100' ? 'before' : value === '0' ? 'after' : 'split';
   }
-  modes.forEach(button => button.addEventListener('click', () => {
+  function selectMode(button) {
     const showPair = button.dataset.compareMode === 'pair';
     pair.hidden = !showPair;
     compare.hidden = showPair;
     hint.hidden = showPair;
     modes.forEach(mode => mode.setAttribute('aria-pressed', mode === button));
-  }));
+  }
+  modes.forEach(button => button.addEventListener('click', () => selectMode(button)));
   range.addEventListener('input', update);
   update();
+  selectMode(modes.find(button => button.dataset.compareMode === 'slider'));
   controls.hidden = false;
 });
 
