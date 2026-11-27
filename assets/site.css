@@ -252,19 +252,20 @@ a { color: inherit; text-decoration: none; }
 .demo-vega .demo-panels { min-height: 0; }
 .demo.demo-vega .demo-panel { padding: .65rem; }
 .vega-capture { display: block; overflow: hidden; border-radius: var(--control-radius); background: #1b1d1a; }
-.vega-capture img { display: block; width: 100%; height: auto; }
+.vega-capture img { display: block; width: 100%; height: auto; max-height: 55svh; object-fit: contain; filter: contrast(1.12) brightness(1.16); }
 .demo.demo-rem404 .demo-panel:has([data-rem-preview]) { padding: .65rem; }
 .rem-stages { display: flex; flex-wrap: wrap; gap: .25rem 1rem; padding: 0 .15rem .6rem; }
-.rem-stages button { min-height: 2.5rem; padding: .15rem 0; border: 0; background: transparent; cursor: pointer; color: var(--faint); font-size: .82rem; }
+.rem-stages button { min-height: 2.75rem; padding: .15rem 0; border: 0; background: transparent; cursor: pointer; color: var(--faint); font-size: .86rem; }
 .rem-stages button:hover, .rem-stages button[aria-pressed="true"] { color: var(--text); }
 .rem-stages button[aria-pressed="true"] { text-decoration: underline; text-underline-offset: .35em; }
-.rem-screen { position: relative; isolation: isolate; width: 100%; aspect-ratio: 2 / 1; max-height: 38svh; overflow: hidden; border-radius: var(--control-radius); background: #080808; }
-.rem-shot { position: absolute; inset: 0; display: grid; place-items: center; visibility: hidden; opacity: 0; }
+.rem-screen { position: relative; isolation: isolate; width: 100%; aspect-ratio: 2 / 1; max-height: 38svh; border-radius: var(--control-radius); }
+.rem-shot { position: absolute; inset: 0; display: grid; place-items: center; overflow: hidden; border-radius: inherit; visibility: hidden; opacity: 0; }
 .rem-shot.is-current { z-index: 1; visibility: visible; opacity: 1; }
 .rem-shot > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
 .rem-entrance { background: #fdfdfd; }
-.rem-viewfinder { position: relative; padding: .5rem; border: 1px solid #777; border-radius: .45rem; }
-.rem-viewfinder img { display: block; width: clamp(5.5rem, 11vw, 8rem); height: auto; border-radius: .1rem; }
+.rem-artwork { background: #080808; }
+.rem-viewfinder { position: relative; padding: .55rem; border: 1px solid #777; border-radius: var(--control-radius); background: #080808; }
+.rem-viewfinder img { display: block; width: clamp(6.5rem, 11vw, 8rem); height: auto; border-radius: .1rem; }
 .rem-viewfinder span { position: absolute; inset: auto .25rem .5rem; height: 2px; opacity: 0; background: #6bb893; }
 .rem-preview[data-phase="1"] .rem-viewfinder { border-color: #6bb893; }
 .rem-preview[data-phase="1"] .rem-viewfinder span { opacity: 1; }
@@ -282,8 +283,12 @@ a { color: inherit; text-decoration: none; }
 .demo-tabs button:focus-visible, .compare-mode button:focus-visible { outline-offset: 3px; }
 @media (prefers-reduced-motion: no-preference) {
   .demo-panel.is-changing { animation: answer-in .25s cubic-bezier(.2,.7,.2,1) both; }
-  .rem-shot { transition: opacity .38s cubic-bezier(.22,.65,.24,1), visibility 0s .38s; }
+  .rem-shot { transition: opacity .38s ease, transform .62s cubic-bezier(.22,.75,.24,1), visibility 0s .62s; }
   .rem-shot.is-current { transition-delay: 0s; }
+  .rem-entrance { transform: scale(.8); }
+  .rem-preview[data-phase="3"] .rem-entrance { transform: scale(.9); }
+  .rem-artwork { transform: scale(.8); }
+  .rem-artwork.is-current { transform: scale(1); }
   .demo-running .rem-preview[data-phase="1"] .rem-viewfinder span { animation: rem-scan .55s cubic-bezier(.25,.65,.3,1) both; }
   @keyframes rem-scan { from { bottom: calc(100% - .5rem); opacity: .25; } }
   @keyframes answer-in { from { opacity: .45; transform: translateY(.35rem); } }
@@ -339,6 +344,7 @@ a { color: inherit; text-decoration: none; }
 .case-heading p:not(.eyebrow) { max-width: 42ch; color: var(--muted); font-size: clamp(1rem, 1.35vw, 1.16rem); }
 .case-demo { background: var(--bg); border-bottom: 1px solid var(--hairline); padding-block: clamp(1.7rem, 5vw, 5rem); }
 .case-demo .wrap { max-width: 64rem; }
+.case-demo-vega .wrap { max-width: min(54rem, calc(90svh + 1.5rem)); }
 .case-demo-aether .wrap { max-width: 78rem; }
 .case-demo .demo-panels { min-height: 17rem; }
 .case-demo .demo-panel { padding-block: clamp(1.3rem, 5vw, 3.8rem); }
@@ -396,7 +402,8 @@ a { color: inherit; text-decoration: none; }
   .chapter-title { margin-top: .68rem; }
   .demo-scene { --demo-travel: clamp(14rem, 46svh, 23rem); }
   .demo-rem404 .demo-panel { padding-block: 1rem; }
-  .rem-screen { aspect-ratio: 1.65; }
+  .rem-screen { aspect-ratio: 4 / 3; }
+  .rem-artwork > img { object-fit: cover; object-position: 53% center; }
   .chapter-desc { margin-top: .64rem; }
   .chapter-copy a { margin-top: 1.1rem; }
   .case-heading, .dossier > article { gap: .9rem; }
