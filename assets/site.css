@@ -251,8 +251,17 @@ a { color: inherit; text-decoration: none; }
 .demo-panel p { color: var(--muted); font-size: 1rem; margin-top: .66rem; }
 .demo-vega .demo-panels { min-height: 0; }
 .demo.demo-vega .demo-panel { padding: .65rem; }
-.vega-capture { display: block; overflow: hidden; border-radius: var(--control-radius); background: #1b1d1a; }
-.vega-capture img { display: block; width: 100%; height: auto; max-height: 55svh; object-fit: contain; filter: contrast(1.12) brightness(1.16); }
+.vega-workspace { display: grid; grid-template-rows: auto 1fr; min-block-size: 20.75rem; padding: clamp(.9rem, 2.6vw, 1.75rem); border-radius: var(--control-radius); background: #1a1a1a; }
+.vega-workspace-header { display: flex; align-items: baseline; gap: .75rem; padding-bottom: .8rem; border-bottom: 1px solid #414141; }
+.vega-workspace-header strong { font-size: clamp(1.125rem, 2vw, 1.4rem); }
+.vega-workspace-header span, .vega-record-date { color: #adadad; font-size: .84rem; }
+.vega-list { display: grid; grid-auto-rows: 1fr; list-style: none; margin: 0; padding: 0; }
+.vega-list li { display: grid; grid-template-columns: clamp(2.6rem, 5vw, 4rem) minmax(0, 1fr); align-items: center; gap: clamp(.65rem, 2vw, 1.25rem); padding-block: .8rem; }
+.vega-list li + li { border-top: 1px solid #373737; }
+.vega-record-date { display: grid; gap: .15rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.vega-record-hour { color: #ededed; font-size: 1rem; font-weight: 600; }
+.vega-record-copy strong { font-size: clamp(1rem, 1.75vw, 1.25rem); line-height: 1.3; }
+.vega-record-copy p { margin-top: .25rem; color: #c3c3c3; font-size: .93rem; line-height: 1.45; }
 .demo.demo-rem404 .demo-panel:has([data-rem-preview]) { padding: .65rem; }
 .rem-stages { display: flex; flex-wrap: wrap; gap: .25rem 1rem; padding: 0 .15rem .6rem; }
 .rem-stages button { min-height: 2.75rem; padding: .15rem 0; border: 0; background: transparent; cursor: pointer; color: var(--faint); font-size: .86rem; }
@@ -344,7 +353,7 @@ a { color: inherit; text-decoration: none; }
 .case-heading p:not(.eyebrow) { max-width: 42ch; color: var(--muted); font-size: clamp(1rem, 1.35vw, 1.16rem); }
 .case-demo { background: var(--bg); border-bottom: 1px solid var(--hairline); padding-block: clamp(1.7rem, 5vw, 5rem); }
 .case-demo .wrap { max-width: 64rem; }
-.case-demo-vega .wrap { max-width: min(54rem, calc(90svh + 1.5rem)); }
+.case-demo-vega .wrap { max-width: 46rem; }
 .case-demo-aether .wrap { max-width: 78rem; }
 .case-demo .demo-panels { min-height: 17rem; }
 .case-demo .demo-panel { padding-block: clamp(1.3rem, 5vw, 3.8rem); }
@@ -396,6 +405,7 @@ a { color: inherit; text-decoration: none; }
   .compare-card-label { min-block-size: 4.5rem; }
   .demo-heading { padding-inline: 1rem; }
   .demo-tabs { padding-inline: 1rem; }
+  .vega-workspace { min-block-size: 21.75rem; }
   .demo-journey li { font-size: .8rem; }
   .chapter-grid, .case-heading, .dossier > article { grid-template-columns: 1fr; }
   .chapter-grid { gap: 1.65rem; }
