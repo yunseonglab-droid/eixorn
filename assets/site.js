@@ -130,24 +130,51 @@ document.querySelectorAll('[data-print]').forEach(button => {
 const introVideo = document.querySelector('[data-intro-video]');
 if (introVideo) {
   let startDeadline;
+  let attempt = 0;
   function showWordmark() {
+    attempt += 1;
     clearTimeout(startDeadline);
     introVideo.hidden = true;
     introVideo.pause();
   }
-  introVideo.addEventListener('ended', showWordmark, { once: true });
-  introVideo.addEventListener('error', showWordmark, { once: true });
+  function playIntro() {
+    if (reducedMotion.matches) {
+      showWordmark();
+      return;
+    }
+    const playback = ++attempt;
+    clearTimeout(startDeadline);
+    if (!introVideo.hasAttribute('src') || introVideo.error) {
+      introVideo.src = introVideo.dataset.src;
+    } else {
+      introVideo.currentTime = 0;
+    }
+    introVideo.hidden = false;
+    introVideo.muted = true;
+    startDeadline = setTimeout(showWordmark, 3000);
+    introVideo.play().then(() => {
+      if (playback === attempt) clearTimeout(startDeadline);
+    }).catch(() => {
+      if (playback === attempt) showWordmark();
+    });
+  }
+  introVideo.addEventListener('ended', () => {
+    if (introVideo.ended) showWordmark();
+  });
+  introVideo.addEventListener('error', showWordmark);
   reducedMotion.addEventListener('change', event => {
     if (event.matches) showWordmark();
   });
-  if (reducedMotion.matches || window.location.hash === '#studio') {
-    showWordmark();
-  } else {
-    introVideo.muted = true;
-    introVideo.src = introVideo.dataset.src;
-    startDeadline = setTimeout(showWordmark, 3000);
-    introVideo.play().then(() => clearTimeout(startDeadline)).catch(showWordmark);
-  }
+  const homeLink = document.querySelector('[data-home-link]');
+  homeLink?.addEventListener('click', event => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    if (window.location.href !== homeLink.href) history.pushState(null, '', homeLink.href);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    playIntro();
+  });
+  if (window.location.hash === '#studio') showWordmark();
+  else playIntro();
 }
 
 const homeProducts = document.querySelector('.home-products');

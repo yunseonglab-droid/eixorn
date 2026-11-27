@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">EIXORN</title>
+  <rect x="1" y="1" width="126" height="126" rx="26" fill="#111111" stroke="#373737" stroke-width="2"/>
+  <g fill="#F4F4F0">
+    <path d="M22 43L48 23H108L94 37H54L37 50V64L22 76Z"/>
+    <path d="M45 69L63 55H94L80 69H68L59 76V91H107L92 105H30L45 93Z"/>
+  </g>
+</svg>
