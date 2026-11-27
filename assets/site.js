@@ -184,16 +184,19 @@ if (studioStory) {
   const header = document.querySelector('.site-header');
   let active = 0;
   let frame = 0;
+  let step = 0;
+  let leaving;
 
   function updateStudioScene() {
     frame = 0;
     if (!studioStory.classList.contains('is-staged')) return;
-    const distance = studioStory.offsetHeight - stage.offsetHeight;
-    if (distance <= 0) return;
+    if (step <= 0) return;
     const passed = Math.max(0, header.offsetHeight - studioStory.getBoundingClientRect().top);
-    const next = Math.min(scenes.length - 1, Math.floor(passed / distance * scenes.length));
+    const next = Math.min(scenes.length - 1, Math.floor(passed / step));
     if (next === active) return;
-    scenes[active].classList.remove('is-active');
+    leaving?.classList.remove('is-leaving');
+    leaving = scenes[active];
+    leaving.classList.replace('is-active', 'is-leaving');
     scenes[next].classList.add('is-active');
     studioStory.classList.toggle('is-closing', next === scenes.length - 1);
     active = next;
@@ -204,6 +207,8 @@ if (studioStory) {
     if (stage.offsetHeight > window.innerHeight - header.offsetHeight + 1) {
       studioStory.classList.remove('is-staged');
     }
+    const closingExtra = Number(getComputedStyle(studioStory).getPropertyValue('--studio-closing-extra'));
+    step = (studioStory.offsetHeight - stage.offsetHeight) / (scenes.length + closingExtra);
     updateStudioScene();
   }
 
@@ -264,7 +269,18 @@ if (homeProducts) {
       });
       syncPlayback();
     }, { threshold: .55 });
-    homeProducts.querySelectorAll('[data-home-film]').forEach(film => {
+    const films = homeProducts.querySelectorAll('[data-home-film]');
+    if (films.length && !reducedMotion.matches) {
+      const prepareFirstFilm = new IntersectionObserver(([entry], preloadObserver) => {
+        if (!entry.isIntersecting) return;
+        preloadObserver.disconnect();
+        if (reducedMotion.matches || entry.target.hasAttribute('src')) return;
+        entry.target.preload = 'auto';
+        entry.target.src = entry.target.dataset.homeFilm;
+      }, { rootMargin: '0px 0px 40% 0px' });
+      prepareFirstFilm.observe(films[0]);
+    }
+    films.forEach(film => {
       film.muted = true;
       film.addEventListener('playing', () => film.classList.add('is-visible'));
       film.addEventListener('ended', () => keepPoster(film), { once: true });
