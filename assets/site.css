@@ -46,15 +46,15 @@ a { color: inherit; text-decoration: none; }
 .skip { position: fixed; z-index: 30; top: .75rem; left: 1rem; padding: .75rem; color: var(--canvas); background: var(--accent); transform: translateY(-200%); }
 .skip:focus { transform: none; }
 
-.hero { --hero-screen: max(23rem, calc(100svh - var(--header))); background: var(--bg); }
+.hero { --hero-screen: max(23rem, calc(100svh - var(--header))); background: #000; }
 .hero-stage {
   min-height: var(--hero-screen); position: relative; display: grid; place-items: center;
   padding-block: clamp(4.8rem, 12vh, 8rem);
 }
-.hero-branding { display: grid; grid-template-areas: "brand"; place-items: center; width: min(100%, 58rem); aspect-ratio: 8 / 3; margin-inline: auto; isolation: isolate; background: var(--bg); }
+.hero-branding { display: grid; grid-template-areas: "brand"; place-items: center; width: min(100%, 58rem); aspect-ratio: 8 / 3; margin-inline: auto; }
 .hero-wordmark { grid-area: brand; width: 92%; }
 .hero-wordmark img { width: 100%; height: auto; }
-.hero-video { grid-area: brand; width: 100%; height: auto; z-index: 1; display: block; pointer-events: none; mix-blend-mode: lighten; }
+.hero-video { grid-area: brand; width: 100%; height: auto; z-index: 1; display: block; pointer-events: none; }
 .hero-action { position: absolute; z-index: 2; bottom: clamp(1.5rem, 4vh, 3.5rem); display: inline-grid; justify-items: center; gap: .8rem; color: var(--muted); font-size: .95rem; padding: .5rem 1rem 0; }
 .hero-action span { width: 1px; height: 1.8rem; background: var(--accent); transition: transform .22s; transform-origin: top; }
 .hero-action:hover { color: var(--accent); }
