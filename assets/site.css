@@ -158,9 +158,9 @@ a { color: inherit; text-decoration: none; }
 .compare-card-label span { color: var(--muted); font-size: clamp(.78rem, 1.15vw, .95rem); line-height: 1.35; word-break: keep-all; }
 .compare-card-after .compare-card-label strong { color: var(--accent); }
 .compare-card img { width: 100%; height: auto; }
-.compare-scene { --compare-top: calc(var(--header) + 1.25rem); }
+.compare-scene { --compare-top: calc(var(--header) + 1.25rem); --compare-travel: clamp(15rem, 46svh, 30rem); }
 .chapter-aether .compare-scene { --compare-top: calc(var(--header) + var(--work-nav) + .65rem); }
-.compare-scroll-enabled { padding-bottom: clamp(15rem, 46svh, 30rem); }
+.compare-scroll-enabled::after { content: ""; display: block; height: var(--compare-travel); }
 .compare-scroll-enabled .compare-figure { position: sticky; top: var(--compare-top); }
 .compare-scroll-enabled:not(.compare-manual) .compare { scale: var(--scene-scale, 1); }
 .compare-figure { min-width: 0; }
@@ -348,7 +348,7 @@ a { color: inherit; text-decoration: none; }
   .chapter-aether .chapter-copy > div { grid-template-columns: minmax(0, 1fr); gap: .6rem; }
   .chapter-aether .chapter-title { max-width: none; }
   .compare { aspect-ratio: 1.35; }
-  .compare-scroll-enabled { padding-bottom: clamp(11rem, 34svh, 18rem); }
+  .compare-scene { --compare-travel: clamp(11rem, 34svh, 18rem); }
   .compare-card-label { min-block-size: 4.5rem; }
   .demo-heading { padding-inline: 1rem; }
   .demo-tabs { padding-inline: 1rem; }
