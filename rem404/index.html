@@ -12,9 +12,9 @@
 <meta property="og:url" content="https://yunseonglab-droid.github.io/eixorn/rem404/"><link rel="canonical" href="https://yunseonglab-droid.github.io/eixorn/rem404/"><link rel="alternate" hreflang="en" href="https://yunseonglab-droid.github.io/eixorn/en/rem404/">
 <title>REM404 | 엑소론</title>
 <link rel="icon" href="/eixorn/assets/eixorn-fold.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/eixorn/assets/site.css?v=20261127-4">
+<link rel="stylesheet" href="/eixorn/assets/site.css?v=product-walkthroughs-20261127">
 
-<script src="/eixorn/assets/site.js" defer></script>
+<script src="/eixorn/assets/site.js?v=product-walkthroughs-20261127" defer></script>
 </head>
 <body class="case" id="top">
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -36,7 +36,7 @@
     
   </h1></div><div><h2>전시장에서 시작하는 디지털 경험.</h2><p>작가와 운영자가 전시를 구성하고, 관객이 QR로 작품과 이미지 인식 AR을 만나는 플랫폼입니다. 준비부터 관람 이후의 아카이브까지 한 전시 안에서 이어집니다.</p><a class="outline-link" href="https://rem404.com/">REM404 공식 사이트</a></div></div>
     </div></section>
-    <section class="case-demo case-demo-rem404" aria-label="체험과 검증"><div class="wrap"><div class="demo demo-rem404" data-demo data-selected="0">
+    <section class="case-demo case-demo-rem404" aria-label="체험과 검증"><div class="wrap"><div class="demo-scene"><div class="demo demo-rem404" data-demo data-selected="0">
       <div class="demo-heading"><span class="demo-brand">REM404</span><span>전시</span></div>
       <div class="demo-body">
         <div class="demo-tabs" role="tablist" aria-label="역할을 바꿔 한 전시가 어떻게 운영되는지 살펴보세요.">
@@ -45,25 +45,38 @@
         <div class="demo-panels">
           <div class="demo-panel" role="tabpanel" tabindex="0" id="case-rem404-panel-0" aria-labelledby="case-rem404-tab-0" >
             <ol class="demo-journey"><li>QR 열기</li><li>작품과 AR 감상</li><li>기억 남기기</li></ol>
+<div class="rem-preview" data-rem-preview data-phase="2">
+              <div class="rem-scan" data-rem-view hidden>
+                <div class="rem-viewfinder"><img src="/eixorn/assets/rem404-demo-qr.png" alt="" width="198" height="198" loading="lazy"><span aria-hidden="true"></span></div>
+              </div>
+              <div class="rem-artwork" data-rem-view>
+                <div class="rem-artwork-image" aria-hidden="true"></div>
+                <div><small>시연 데이터</small><strong>작품 상세</strong></div>
+              </div>
+              <p class="rem-preview-status"><span data-rem-status hidden>카메라로 전시 QR을 비춥니다.</span><span data-rem-status hidden>QR 인식 · 관람 화면을 엽니다.</span><span data-rem-status>작품을 선택해 이미지와 설명을 봅니다.</span></p>
+            </div>
             <strong>전시장 입구에서 시작</strong><p>QR을 열고 작품을 살펴봅니다. 전시에서 지원하는 작품은 카메라로 인식해 AR을 경험합니다.</p>
             
           </div><div class="demo-panel" role="tabpanel" tabindex="0" id="case-rem404-panel-1" aria-labelledby="case-rem404-tab-1" hidden>
             <ol class="demo-journey"><li>작품 등록</li><li>전시 자료 구성</li><li>관객 화면 확인</li></ol>
+
             <strong>작품과 자료를 한곳에</strong><p>배정된 전시에 작품 설명과 이미지, 영상 등 관객에게 보여줄 자료를 구성합니다.</p>
             
           </div><div class="demo-panel" role="tabpanel" tabindex="0" id="case-rem404-panel-2" aria-labelledby="case-rem404-tab-2" hidden>
             <ol class="demo-journey"><li>운영 상태 관리</li><li>참여 권한 관리</li><li>전시 아카이브</li></ol>
+
             <strong>전시 운영과 권한 관리</strong><p>전시의 운영 상태와 참여 역할을 관리하고 전시 단위로 자료를 확인합니다.</p>
             
           </div><div class="demo-panel" role="tabpanel" tabindex="0" id="case-rem404-panel-3" aria-labelledby="case-rem404-tab-3" hidden>
             <ol class="demo-journey"><li>운영 상태 확인</li><li>AR 준비 확인</li><li>진단 결과 검토</li></ol>
+
             <strong>현장 운영 준비 점검</strong><p>데스크톱에서 운영 상태와 AR 준비 항목을 확인합니다.</p>
             
           </div>
         </div>
       </div>
       <div class="demo-caption">역할을 바꿔 한 전시가 어떻게 운영되는지 살펴보세요.</div>
-    </div></div></section>
+    </div></div></div></section>
     <section class="case-section wrap"><h2>출발점</h2><p>전시 웹, 현장 AR, 작품 관리와 운영 점검이 서로 떨어져 있으면 현장 변경을 반영하기 어렵습니다. REM404는 작품과 관객 기록을 전시 단위로 묶고 역할별 화면을 제공합니다.</p></section>
     <section class="case-section wrap"><h2>설계와 구현</h2><dl class="features"><div><dt>관객용 웹과 모바일 앱</dt><dd>관객은 QR이나 전시 링크로 로그인 없이 접속합니다. 작품 정보, 이미지 인식 AR과 관람 기록을 이용할 수 있습니다. 관객 경로는 웹과 iOS·Android 앱에 걸쳐 설계했습니다.</dd></div><div><dt>작가·관리자 워크스페이스</dt><dd>작가는 배정된 전시의 작품 자료를 관리합니다. 관리자는 역할과 전시 운영 상태를 관리합니다.</dd></div><div><dt>REM404 Center</dt><dd>데스크톱 도구에서 운영 상태와 AR 준비를 점검합니다. 관객 경험과 별도로 운영·개발 점검을 수행할 수 있습니다.</dd></div><div><dt>전시 아카이브</dt><dd>작품과 관객 기록을 전시별로 관리하며, 운영이 끝난 전시는 아카이브 상태로 전환합니다.</dd></div></dl></section>
     <section class="case-section wrap case-proof"><h2>체험과 검증</h2><div><h3>한 전시를 네 가지 관점에서</h3><p>아래 시연에서 관객, 작가, 관리자와 Center가 각각 전시에 어떻게 연결되는지 확인할 수 있습니다.</p></div></section>
