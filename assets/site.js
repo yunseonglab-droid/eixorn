@@ -1,14 +1,43 @@
 document.querySelectorAll('[data-comparison]').forEach(figure => {
+  const scene = figure.parentElement;
   const compare = figure.querySelector('[data-compare]');
   const pair = figure.querySelector('[data-compare-pair]');
   const hint = figure.querySelector('.compare-hint');
   const range = compare.querySelector('input');
   const controls = figure.querySelector('.compare-mode');
   const modes = Array.from(controls.querySelectorAll('[data-compare-mode]'));
-  function update() {
-    const value = range.value;
+  const scrollMotion = window.matchMedia('(min-height: 530px) and (prefers-reduced-motion: no-preference)');
+  const initialValue = Number(range.value);
+  let manual = false;
+  let frame = 0;
+  function update(value = Number(range.value)) {
     compare.style.setProperty('--split', value + '%');
-    compare.dataset.position = value === '100' ? 'before' : value === '0' ? 'after' : 'split';
+    compare.dataset.position = value === 100 ? 'before' : value === 0 ? 'after' : 'split';
+  }
+  function renderScroll() {
+    frame = 0;
+    if (!scrollMotion.matches || manual || compare.hidden) return;
+    const distance = scene.offsetHeight - figure.offsetHeight;
+    if (distance <= 0) return;
+    const stickyTop = parseFloat(getComputedStyle(figure).top);
+    const progress = Math.max(0, Math.min(1, (stickyTop - scene.getBoundingClientRect().top) / distance));
+    const sweep = Math.max(0, Math.min(1, (progress - .08) / .8));
+    const split = 100 * (1 - sweep * sweep * (3 - 2 * sweep));
+    compare.style.setProperty('--scene-scale', .94 + .06 * Math.min(1, progress / .3));
+    range.value = Math.round(split);
+    update(split);
+  }
+  function queueScroll() {
+    if (!frame && scrollMotion.matches && !manual && !compare.hidden) frame = requestAnimationFrame(renderScroll);
+  }
+  function syncMotion() {
+    scene.classList.toggle('compare-scroll-enabled', scrollMotion.matches);
+    if (scrollMotion.matches) {
+      queueScroll();
+    } else if (!manual) {
+      range.value = initialValue;
+      update();
+    }
   }
   function selectMode(button) {
     const showPair = button.dataset.compareMode === 'pair';
@@ -16,12 +45,21 @@ document.querySelectorAll('[data-comparison]').forEach(figure => {
     compare.hidden = showPair;
     hint.hidden = showPair;
     modes.forEach(mode => mode.setAttribute('aria-pressed', mode === button));
+    queueScroll();
   }
   modes.forEach(button => button.addEventListener('click', () => selectMode(button)));
-  range.addEventListener('input', update);
+  range.addEventListener('input', () => {
+    manual = true;
+    scene.classList.add('compare-manual');
+    update();
+  });
   update();
   selectMode(modes.find(button => button.dataset.compareMode === 'slider'));
   controls.hidden = false;
+  window.addEventListener('scroll', queueScroll, {passive: true});
+  window.addEventListener('resize', queueScroll);
+  scrollMotion.addEventListener('change', syncMotion);
+  syncMotion();
 });
 
 document.querySelectorAll('[data-demo]').forEach(demo => {
