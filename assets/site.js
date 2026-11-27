@@ -127,27 +127,18 @@ document.querySelectorAll('[data-print]').forEach(button => {
   button.addEventListener('click', () => window.print());
 });
 
-const introVideo = document.querySelector('[data-intro-video]');
-if (introVideo) {
-  let startDeadline;
-  function showWordmark() {
-    clearTimeout(startDeadline);
-    introVideo.hidden = true;
-    introVideo.pause();
+const homeProducts = document.querySelector('.home-products');
+if (homeProducts) {
+  const productLinks = Array.from(homeProducts.querySelectorAll('a'));
+  function openLegacyProductLink() {
+    const hash = window.location.hash;
+    const link = hash === '#products'
+      ? document.querySelector('[data-products-link]')
+      : productLinks.find(product => product.hash === hash);
+    if (link) window.location.replace(link.href);
   }
-  introVideo.addEventListener('ended', showWordmark, { once: true });
-  introVideo.addEventListener('error', showWordmark, { once: true });
-  reducedMotion.addEventListener('change', event => {
-    if (event.matches) showWordmark();
-  });
-  if (reducedMotion.matches) {
-    showWordmark();
-  } else {
-    introVideo.muted = true;
-    introVideo.src = introVideo.dataset.src;
-    startDeadline = setTimeout(showWordmark, 3000);
-    introVideo.play().then(() => clearTimeout(startDeadline)).catch(showWordmark);
-  }
+  window.addEventListener('hashchange', openLegacyProductLink);
+  openLegacyProductLink();
 }
 
 const chapterLinks = Array.from(document.querySelectorAll('[data-chapter-link]'));
@@ -158,34 +149,14 @@ if (chapterLinks.length) {
     return { link, section, sequence, stage: sequence.firstElementChild };
   });
   const nav = document.querySelector('.work-nav');
-  const header = document.querySelector('.site-header');
-  const company = document.querySelector('[data-company-story]');
-  const companyStage = company.querySelector('.company-stage');
-  const sentences = Array.from(company.querySelectorAll('.company-lines li'));
-  const meter = Array.from(company.querySelectorAll('.company-meter span'));
   const clamp = number => Math.min(1, Math.max(0, number));
   let pending = false;
-  let currentSentence = 0;
-
-  function updateStory(headerBottom) {
-    const distance = company.offsetHeight - companyStage.offsetHeight;
-    if (distance <= 0) return;
-    const progress = clamp((headerBottom - company.getBoundingClientRect().top) / distance);
-    const index = Math.min(sentences.length - 1, Math.floor(progress * sentences.length));
-    if (index === currentSentence) return;
-    sentences[currentSentence].classList.remove('is-active');
-    meter[currentSentence].classList.remove('is-active');
-    sentences[index].classList.add('is-active');
-    meter[index].classList.add('is-active');
-    currentSentence = index;
-  }
 
   function updateChapter() {
     pending = false;
     const stickyTop = nav.getBoundingClientRect().bottom;
     const threshold = stickyTop + 24;
     const motion = !reducedMotion.matches;
-    if (motion) updateStory(header.getBoundingClientRect().bottom);
     const measurements = chapters.map(({ link, section, sequence, stage }) => {
       const rect = section.getBoundingClientRect();
       const active = rect.top <= threshold && rect.bottom > threshold;
