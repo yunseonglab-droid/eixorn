@@ -223,123 +223,71 @@ if (studioStory) {
   syncStudioStage();
 }
 
-const homeProducts = document.querySelector('.home-products');
-if (homeProducts) {
-  const productLinks = Array.from(homeProducts.querySelectorAll('a'));
+const filmGroup = document.querySelector('[data-logo-films]');
+const productLinks = Array.from(document.querySelectorAll('[data-product-link]'));
+if (productLinks.length) {
   function openLegacyProductLink() {
     const hash = window.location.hash;
-    const link = hash === '#products'
+    const link = hash === '#products' && filmGroup.classList.contains('home-products')
       ? document.querySelector('[data-products-link]')
-      : productLinks.find(product => product.hash === hash);
+      : productLinks.find(product => `#${product.id}` === hash);
     if (link) window.location.replace(link.href);
   }
   window.addEventListener('hashchange', openLegacyProductLink);
   openLegacyProductLink();
-
-  if ('IntersectionObserver' in window) {
-    const visible = new Set();
-    let active = null;
-    function centerDistance(film) {
-      const rect = film.getBoundingClientRect();
-      return Math.abs(rect.top + rect.height / 2 - window.innerHeight / 2);
-    }
-    function syncPlayback() {
-      const next = document.hidden || reducedMotion.matches
-        ? null
-        : [...visible].sort((a, b) => centerDistance(a) - centerDistance(b))[0] ?? null;
-      if (active === next) return;
-      active?.pause();
-      active = next;
-      if (!next) return;
-      if (!next.hasAttribute('src')) next.src = next.dataset.homeFilm;
-      next.play().catch(() => {
-        if (active === next) keepPoster(next);
-      });
-    }
-    function keepPoster(film) {
-      observer.unobserve(film);
-      visible.delete(film);
-      film.classList.remove('is-visible');
-      syncPlayback();
-    }
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(({target, intersectionRatio}) => {
-        if (intersectionRatio >= .55) visible.add(target);
-        else visible.delete(target);
-      });
-      syncPlayback();
-    }, { threshold: .55 });
-    const films = homeProducts.querySelectorAll('[data-home-film]');
-    if (films.length && !reducedMotion.matches) {
-      const prepareFirstFilm = new IntersectionObserver(([entry], preloadObserver) => {
-        if (!entry.isIntersecting) return;
-        preloadObserver.disconnect();
-        if (reducedMotion.matches || entry.target.hasAttribute('src')) return;
-        entry.target.preload = 'auto';
-        entry.target.src = entry.target.dataset.homeFilm;
-      }, { rootMargin: '0px 0px 40% 0px' });
-      prepareFirstFilm.observe(films[0]);
-    }
-    films.forEach(film => {
-      film.muted = true;
-      film.addEventListener('playing', () => film.classList.add('is-visible'));
-      film.addEventListener('ended', () => keepPoster(film), { once: true });
-      film.addEventListener('error', () => keepPoster(film), { once: true });
-      observer.observe(film);
-    });
-    document.addEventListener('visibilitychange', syncPlayback);
-    reducedMotion.addEventListener('change', syncPlayback);
-  }
 }
 
-const chapterLinks = Array.from(document.querySelectorAll('[data-chapter-link]'));
-if (chapterLinks.length) {
-  const chapters = chapterLinks.map(link => {
-    const section = document.getElementById(link.hash.slice(1));
-    const sequence = section.querySelector('[data-sequence]');
-    return { link, section, sequence, stage: sequence.firstElementChild };
+if (filmGroup && 'IntersectionObserver' in window) {
+  const visible = new Set();
+  let active = null;
+  function centerDistance(film) {
+    const rect = film.getBoundingClientRect();
+    return Math.abs(rect.top + rect.height / 2 - window.innerHeight / 2);
+  }
+  function syncPlayback() {
+    const next = document.hidden || reducedMotion.matches
+      ? null
+      : [...visible].sort((a, b) => centerDistance(a) - centerDistance(b))[0] ?? null;
+    if (active === next) return;
+    active?.pause();
+    active = next;
+    if (!next) return;
+    if (!next.hasAttribute('src')) next.src = next.dataset.logoFilm;
+    next.play().catch(() => {
+      if (active === next) keepPoster(next);
+    });
+  }
+  function keepPoster(film) {
+    observer.unobserve(film);
+    visible.delete(film);
+    film.classList.remove('is-visible');
+    syncPlayback();
+  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(({target, intersectionRatio}) => {
+      if (intersectionRatio >= .55) visible.add(target);
+      else visible.delete(target);
+    });
+    syncPlayback();
+  }, { threshold: .55 });
+  const films = filmGroup.querySelectorAll('[data-logo-film]');
+  if (films.length && !reducedMotion.matches) {
+    const prepareFirstFilm = new IntersectionObserver(([entry], preloadObserver) => {
+      if (!entry.isIntersecting) return;
+      preloadObserver.disconnect();
+      if (reducedMotion.matches || entry.target.hasAttribute('src')) return;
+      entry.target.preload = 'auto';
+      entry.target.src = entry.target.dataset.logoFilm;
+    }, { rootMargin: '0px 0px 40% 0px' });
+    prepareFirstFilm.observe(films[0]);
+  }
+  films.forEach(film => {
+    film.muted = true;
+    film.addEventListener('playing', () => film.classList.add('is-visible'));
+    film.addEventListener('ended', () => keepPoster(film), { once: true });
+    film.addEventListener('error', () => keepPoster(film), { once: true });
+    observer.observe(film);
   });
-  const nav = document.querySelector('.work-nav');
-  const clamp = number => Math.min(1, Math.max(0, number));
-  let pending = false;
-
-  function updateChapter() {
-    pending = false;
-    const stickyTop = nav.getBoundingClientRect().bottom;
-    const threshold = stickyTop + 24;
-    const motion = !reducedMotion.matches;
-    const measurements = chapters.map(({ link, section, sequence, stage }) => {
-      const rect = section.getBoundingClientRect();
-      const active = rect.top <= threshold && rect.bottom > threshold;
-      const travel = motion ? sequence.offsetHeight - stage.offsetHeight : 0;
-      return { link, sequence, rect, active, travel };
-    });
-    measurements.forEach(({ link, sequence, rect, active, travel }) => {
-      if (active) {
-        link.setAttribute('aria-current', 'location');
-        link.style.setProperty('--chapter-progress', motion ? clamp((threshold - rect.top) / rect.height) : 1);
-      } else {
-        link.removeAttribute('aria-current');
-      }
-      if (!travel) return;
-      const progress = clamp((stickyTop - rect.top) / travel);
-      const eased = progress * progress * (3 - 2 * progress);
-      sequence.style.setProperty('--logo-lift', `${(-1.75 * eased).toFixed(3)}rem`);
-      sequence.style.setProperty('--logo-scale', (1 - .12 * eased).toFixed(3));
-    });
-  }
-  function queueChapter() {
-    if (pending) return;
-    pending = true;
-    requestAnimationFrame(updateChapter);
-  }
-  window.addEventListener('scroll', queueChapter, { passive: true });
-  window.addEventListener('resize', queueChapter, { passive: true });
-  function updateMotion() {
-    document.documentElement.classList.toggle('motion-scenes', !reducedMotion.matches);
-    updateChapter();
-  }
-  reducedMotion.addEventListener('change', updateMotion);
-  updateMotion();
+  document.addEventListener('visibilitychange', syncPlayback);
+  reducedMotion.addEventListener('change', syncPlayback);
 }
-
