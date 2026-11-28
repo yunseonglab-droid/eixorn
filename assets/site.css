@@ -334,8 +334,11 @@ a { color: inherit; text-decoration: none; }
 .case-section { display: grid; grid-template-columns: .56fr 1fr; gap: 1.35rem; padding-block: clamp(2rem, 5vw, 4.5rem); border-bottom: 1px solid var(--hairline); }
 .case-section > h2 { font-size: clamp(1.5rem, 2.7vw, 2.5rem); letter-spacing: -.05em; }
 .case-section p, .features dd { color: var(--muted); max-width: 61ch; font-size: clamp(1rem, 1.4vw, 1.2rem); }
-.features > div + div { margin-top: 1.35rem; padding-top: 1.35rem; border-top: 1px solid var(--hairline); }
-.features dt, .case-proof h3, .dossier-copy h3 { font-size: 1.2rem; line-height: 1.2; font-weight: 660; letter-spacing: -.03em; margin-bottom: .42rem; }
+.case-workflow { margin: 0; padding-inline-start: 1.4rem; }
+.case-workflow li { padding-inline-start: .45rem; }
+.case-workflow li::marker { color: var(--faint); font-variant-numeric: tabular-nums; }
+.features > div + div, .case-workflow li + li { margin-top: 1.35rem; padding-top: 1.35rem; border-top: 1px solid var(--hairline); }
+.features dt, .case-workflow h3, .case-proof h3, .dossier-copy h3 { font-size: 1.2rem; line-height: 1.2; font-weight: 660; letter-spacing: -.03em; margin-bottom: .42rem; }
 .case-next { padding-block: clamp(2rem, 5vw, 4rem); }
 .case-next a { display: grid; grid-template-columns: .56fr 1fr auto; align-items: center; gap: 1.35rem; min-height: 3rem; }
 .case-next a:hover strong { color: var(--accent); }
@@ -423,8 +426,6 @@ a { color: inherit; text-decoration: none; }
 .profile-project dl { display: grid; gap: .85rem; }
 .profile-project dt { margin-bottom: .2rem; font-weight: 630; }
 .profile-project dd { color: var(--muted); }
-.aether-detail-features { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .75rem 1.1rem; margin: 0; padding: 0; list-style: none; }
-.aether-detail-features li { padding-top: .65rem; border-top: 1px solid var(--hairline); overflow-wrap: anywhere; }
 .dossier-details summary { width: fit-content; font-weight: 600; cursor: pointer; }
 .dossier-details .features { margin-top: 1rem; }
 @media (max-width: 660px) {

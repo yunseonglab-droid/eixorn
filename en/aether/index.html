@@ -13,9 +13,9 @@
 <title>Aether | EIXORN</title>
 <link rel="icon" href="/eixorn/assets/eixorn-favicon.png?v=fold-mark" type="image/png" sizes="48x48">
 <link rel="icon" href="/eixorn/assets/eixorn-favicon.svg" type="image/svg+xml" sizes="any">
-<link rel="stylesheet" href="/eixorn/assets/site.css?v=product-films-20261128">
+<link rel="stylesheet" href="/eixorn/assets/site.css?v=hover-product-details-20261128">
 
-<script src="/eixorn/assets/site.js?v=product-films-20261128" defer></script>
+<script src="/eixorn/assets/site.js?v=hover-product-details-20261128" defer></script>
 </head>
 <body class="case" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -67,9 +67,13 @@
       </div>
       <figcaption class="figure-meta"><span>We obscured part of the windows and stonework in a public-domain photograph, then used the original as a reference to restore the façade.</span><a href="https://commons.wikimedia.org/wiki/File:House_facade_2023.jpg" class="text-link">Original photograph by Open Spaces Historic Places (CC0)</a><span class="compare-hint" id="case-aether-hint" hidden>Move the handle to compare exactly the same part of the image.</span><span class="compare-scroll-note">Scroll or drag the handle to compare.</span></figcaption>
     </figure></div></section>
-    <section class="case-section wrap"><h2>Aether features</h2>
-      <ul class="aether-detail-features"><li>Up to 4× upscaling</li><li>Old photo repair</li><li>Black-and-white and sepia colorization</li><li>Building façade restoration</li><li>Masking and alignment</li><li>Finishing and export</li></ul>
+    <section class="case-section wrap"><h2>The starting point</h2><p>Building façades shift in perspective from one photograph to the next, and fragments of torn photographs rarely line up. Aether provides alignment and restoration tools for both and lets you mark the areas you want to protect.</p></section>
+    <section class="case-section wrap" aria-labelledby="workflow-title">
+      <h2 id="workflow-title">How it works</h2>
+      <ol class="case-workflow"><li><h3>Open the photograph</h3><p>Open a scan to repair an old photograph. For a façade, open a current photograph and an archival view of the same building, then align them using windows or wall corners visible in both.</p></li><li><h3>Mark what to repair and preserve</h3><p>Brush over a tear or obstruction. On a portrait, mark surviving eyes, nose and mouth with the face protection brush. For a building, start with a segmentation candidate and refine its edges with the brush and eraser.</p></li><li><h3>Compare and export</h3><p>Compare the original and result at the same position to inspect seams, masonry edges and facial features. Refine the result and save a PNG. Façade work can also export reference evidence and checks for pixels outside the mask.</p></li></ol>
     </section>
+    <section class="case-section wrap"><h2>Features</h2><dl class="features"><div><dt>Up to 4× upscaling</dt><dd>Increase the width and height of a photograph by up to 4×. Set the scale and edge detail separately, then inspect the result at a larger size to balance texture and sharpness.</dd></div><div><dt>Old photo repair</dt><dd>Align displaced fragments and mark the tear. Aether fills the gap using the direction and texture of surviving pixels. The face protection brush shields surviving eyes, nose and mouth during tear repair and detail enhancement.</dd></div><div><dt>Black-and-white and sepia colorization</dt><dd>Correct sepia tones and estimate skin color using the original brightness. Mark skin, clothing and background independently to adjust color and strength, or sample a color from a reference photograph.</dd></div><div><dt>Building façade restoration</dt><dd>Align archival references with a present-day photograph to restore damaged or obscured areas. Prioritize pixels visible in the reference and preserve the present-day photograph outside the mask.</dd></div><div><dt>Masking and alignment</dt><dd>Draw a mask by hand or mark points inside and outside the building to generate a segmentation candidate. Align façades using OpenCV SIFT features or manual points, and keep the present-day image where the reference offers insufficient evidence.</dd></div><div><dt>Finishing and export</dt><dd>Retouch small marks with the healing brush and clone stamp, then adjust the crop and level. For a façade restoration, refine brightness and saturation, save a separate version, and compare it with the original or a previous result.</dd></div></dl></section>
+    <section class="case-section wrap case-proof"><h2>Experience and verification</h2><div><h3>Zero changes outside the mask</h3><p>We created a test input by obscuring windows and stonework in a public-domain photograph, then used the original as the reference. All 181,845 pixels outside the mask matched the input after a four-point alignment and restoration.</p></div></section>
     <div class="case-next"><div class="wrap"><a href="/eixorn/en/vega/"><span>Next product</span><strong>Vega</strong><span class="link-mark" aria-hidden="true">+</span></a></div></div></main>
 <footer class="site-footer"><div class="wrap footer-inner">
   <a href="/eixorn/en/" class="brand"><img class="brand-wordmark" src="/eixorn/assets/eixorn-wordmark.svg" width="607" height="98" alt="EIXORN"></a>

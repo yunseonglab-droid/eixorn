@@ -237,7 +237,36 @@ if (productLinks.length) {
   openLegacyProductLink();
 }
 
-if (filmGroup && 'IntersectionObserver' in window) {
+const hoverCatalog = filmGroup?.classList.contains('product-catalog') && window.matchMedia('(any-hover: hover)').matches;
+if (hoverCatalog) {
+  productLinks.forEach(card => {
+    const film = card.querySelector('[data-logo-film]');
+    let hovered = false;
+    function showPoster() {
+      film.pause();
+      film.classList.remove('is-visible');
+    }
+    card.addEventListener('pointerenter', event => {
+      if (event.pointerType !== 'mouse' || reducedMotion.matches) return;
+      hovered = true;
+      if (!film.hasAttribute('src')) film.src = film.dataset.logoFilm;
+      if (film.readyState > 0) film.currentTime = 0;
+      // The poster stays visible while loading or if playback is blocked.
+      film.play().catch(() => {});
+    });
+    card.addEventListener('pointerleave', () => {
+      hovered = false;
+      showPoster();
+    });
+    film.addEventListener('playing', () => {
+      if (hovered && !reducedMotion.matches) film.classList.add('is-visible');
+    });
+    film.addEventListener('error', showPoster);
+    reducedMotion.addEventListener('change', event => {
+      if (event.matches) showPoster();
+    });
+  });
+} else if (filmGroup && 'IntersectionObserver' in window) {
   const visible = new Set();
   let active = null;
   function centerDistance(film) {
