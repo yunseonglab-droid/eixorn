@@ -325,6 +325,36 @@ a { color: inherit; text-decoration: none; }
 .case-heading .eyebrow { margin-bottom: .55rem; }
 .case-heading h2 { font-size: clamp(1.65rem, 3.55vw, 3.5rem); font-weight: 600; letter-spacing: -.044em; }
 .case-heading p:not(.eyebrow) { max-width: 42ch; color: var(--muted); font-size: clamp(1rem, 1.35vw, 1.16rem); }
+.exhibition-case { padding-block: clamp(3rem, 7vw, 6.5rem); background: var(--surface); border-bottom: 1px solid var(--hairline); }
+.exhibition-case > .wrap { max-width: 68rem; }
+.exhibition-case-header h2 {
+  margin-block: .6rem 1.1rem; max-width: 18ch;
+  font-size: clamp(2.15rem, 5vw, 4.7rem); font-weight: 630; letter-spacing: -.053em;
+}
+.exhibition-case-header > p:last-child { max-width: 57ch; font-size: clamp(1rem, 1.48vw, 1.23rem); }
+.exhibition-case-header > p:last-child, .exhibition-case-steps p, .exhibition-case-footer p, .exhibition-case-artwork figcaption { color: var(--muted); }
+.exhibition-case-artwork { margin-top: clamp(1.4rem, 4vw, 3.6rem); }
+.exhibition-case-artwork img { width: 100%; height: auto; border-radius: var(--panel-radius); }
+.exhibition-case-artwork figcaption { margin-top: .72rem; font-size: .9rem; }
+.exhibition-case-steps {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 3vw, 2.2rem);
+  margin: clamp(1.9rem, 5vw, 4.5rem) 0 0; padding-inline-start: 0; list-style-position: inside;
+}
+.exhibition-case-steps li { padding-top: 1rem; border-top: 1px solid var(--border); }
+.exhibition-case-steps li::marker { color: var(--muted); }
+.exhibition-case-steps h3, .exhibition-case-footer h3 { font-size: clamp(1.28rem, 2.2vw, 1.6rem); font-weight: 640; letter-spacing: -.033em; }
+.exhibition-case-steps h3 { display: inline; }
+.exhibition-case-steps p, .exhibition-case-footer p { margin-top: .64rem; line-height: 1.7; }
+.exhibition-case-footer {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: clamp(1.5rem, 5vw, 4rem);
+  margin-top: clamp(1.9rem, 5vw, 4rem); padding-top: clamp(1.4rem, 3vw, 2.4rem); border-top: 1px solid var(--border);
+}
+.exhibition-case-archive { display: inline-grid; gap: .7rem; justify-items: start; width: fit-content; font-size: .93rem; }
+.exhibition-case-archive img { width: 6.5rem; height: auto; border-radius: .3rem; }
+.exhibition-case-archive:hover > span { text-decoration: underline; text-underline-offset: .25em; }
+@media (max-width: 720px) {
+  .exhibition-case-steps, .exhibition-case-footer { grid-template-columns: 1fr; }
+}
 .case-demo { background: var(--bg); border-bottom: 1px solid var(--hairline); padding-block: clamp(1.7rem, 5vw, 5rem); }
 .case-demo .wrap { max-width: 64rem; }
 .case-demo-vega .wrap { max-width: 46rem; }
